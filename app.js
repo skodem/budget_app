@@ -248,9 +248,7 @@ var UIController = (function () {
     clearFields: function () {
       var fields, fieldsArr
 
-      fields = document.querySelectorAll(
-        DOMstrings.inputDescription + ', ' + DOMstrings.inputValue
-      )
+      fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue)
 
       fieldsArr = Array.prototype.slice.call(fields)
 
@@ -266,21 +264,12 @@ var UIController = (function () {
 
       obj.budget > 0 ? (type = 'inc') : (type = 'exp')
 
-      document.querySelector(DOMstrings.budgetLabel).textContent = formatNumber(
-        obj.budget,
-        type
-      )
-      document.querySelector(DOMstrings.incomeLabel).textContent = formatNumber(
-        obj.totalInc,
-        'inc'
-      )
-      document.querySelector(
-        DOMstrings.expensesLabel
-      ).textContent = formatNumber(obj.totalExp, 'exp')
+      document.querySelector(DOMstrings.budgetLabel).textContent = formatNumber(obj.budget, type)
+      document.querySelector(DOMstrings.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc')
+      document.querySelector(DOMstrings.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp')
 
       if (obj.percentage > 0) {
-        document.querySelector(DOMstrings.percentageLabel).textContent =
-          obj.percentage + '%'
+        document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%'
       } else {
         document.querySelector(DOMstrings.percentageLabel).textContent = '---'
       }
@@ -321,17 +310,12 @@ var UIController = (function () {
       month = now.getMonth()
 
       year = now.getFullYear()
-      document.querySelector(DOMstrings.dateLabel).textContent =
-        months[month] + ' ' + year
+      document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year
     },
 
     changedType: function () {
       var fields = document.querySelectorAll(
-        DOMstrings.inputType +
-          ',' +
-          DOMstrings.inputDescription +
-          ',' +
-          DOMstrings.inputValue
+        DOMstrings.inputType + ',' + DOMstrings.inputDescription + ',' + DOMstrings.inputValue
       )
 
       nodeListForEach(fields, function (cur) {
@@ -360,13 +344,9 @@ var controller = (function (budgetCtrl, UICtrl) {
       }
     })
 
-    document
-      .querySelector(DOM.container)
-      .addEventListener('click', ctrlDeleteItem)
+    document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem)
 
-    document
-      .querySelector(DOM.inputType)
-      .addEventListener('change', UICtrl.changedType)
+    document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType)
   }
 
   var updateBudget = function () {
